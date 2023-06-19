@@ -58,6 +58,6 @@ bool UChatGPTObject::IsLeaveUnused() const
 
 void UChatGPTObject::SetOpenAIKey(const FString& InKey)
 {
-	HTTP->SetOpenAIKey(InKey);
+	HTTP->SetKey(InKey);
 }
 

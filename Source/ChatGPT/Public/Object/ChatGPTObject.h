@@ -14,7 +14,7 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FHttpChatGPTResponseDelegate OnSuccess;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintAssignable)
 	FHttpChatGPTResponseDelegate OnFailure;
 public:
 	UFUNCTION(BlueprintCallable,meta=(DisplayName = "CreateChatGPTObject",Keywords = "GPT"),Category="ChatGPT")
@@ -27,9 +27,9 @@ public:
 			);
 
 	UFUNCTION(BlueprintPure,Category="ChatGPT")
-	bool IsLeaveUnused() const;
+	bool IsLeaveUnused()const;
 
-	UFUNCTION(BlueprintPure,Category="ChatGPT")
+	UFUNCTION(BlueprintCallable,Category="ChatGPT")
 	void SetOpenAIKey(const FString &InKey);
 private:
 	void OnRequestComplete(FHttpRequestPtr HttpRequest,FHttpResponsePtr HttpResponse,bool bSuccessed);

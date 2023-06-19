@@ -35,7 +35,8 @@ public class ChatGPT : ModuleRules
 			new string[]
 			{
 				"CoreUObject",
-				"HTTP"
+				"HTTP",
+				"Json"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

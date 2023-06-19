@@ -12,6 +12,7 @@ namespace ChatGPTHTTP
 		GET,
 		DELETE,
 	};
+
 	struct FHTTPDelegate
 	{
 		FHttpRequestCompleteDelegate CompleteDelegate;
@@ -25,21 +26,21 @@ namespace ChatGPTHTTP
 			,const FString &InContent
 			,TMap<FString,FString> &InCustomMetaDataHeader
 			,EHTTPVerbType VerbType = EHTTPVerbType::POST);
-		
+
 		static TSharedPtr<FHTTP> CreateHTTPObject(FHTTPDelegate InDelegate);
-	public:
+
 		bool IsLeaveUnused()const{ return bLeaveUnused;};
 		
-		void SetOpenAIKey(const FString &OpenAIKey){this->OpenAIKey = OpenAIKey;};
+		void SetKey(const FString &Key){OpenAIKey = Key;};
 	private:
 		void OnRequestComplete(FHttpRequestPtr HttpRequest,FHttpResponsePtr HttpResponse,bool bSuccessed);
 		
-	private:
 		FString HTTPVerbToString(EHTTPVerbType InVerbType);
 		
-	private:
 		FString OpenAIKey;
+		
 		bool bLeaveUnused;//是否闲置
+		
 		FHTTPDelegate Delegate;
 	};
 }
