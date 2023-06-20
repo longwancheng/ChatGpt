@@ -1,9 +1,10 @@
 #include "HTTP/ChatGptHttp.h"
+#include "Core/ChatGptMethod.h"
 
 namespace ChatGPTHTTP
 {
 	FHTTP::FHTTP(FHTTPDelegate InDelegate)
-		:Delegate(InDelegate)
+		:Delegate(InDelegate)//对成员函数Delegate进行初始化
 	{
 		bLeaveUnused = true;
 	}
@@ -62,11 +63,19 @@ namespace ChatGPTHTTP
 		}
 		return TEXT("POST");
 	}
-
+	
 	void FHTTP::OnRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HHttpRequest, bool bSuccessed)
 	{
 		bLeaveUnused = true;
 		Delegate.CompleteDelegate.ExecuteIfBound(HttpRequest,HHttpRequest,bSuccessed);
 	}
 
+	bool FHTTP::Request(const FString& InURL, const FChatGPTCompletionParam& InCompletionParam,
+		TMap<FString, FString>& InCustomMetaDataHeader, EHTTPVerbType VerbType)
+	{
+		FString ParamJson;
+		ChatGPTMethod::ChatGPTCompletionParamToString(InCompletionParam,ParamJson);
+		return Request(InURL,ParamJson,InCustomMetaDataHeader,VerbType);
+	}
+	
 }

@@ -17,8 +17,14 @@ void UChatGPTObject::InitChatGPT()
 	HTTP = ChatGPTHTTP::FHTTP::CreateHTTPObject(HTTPDelegate);
 }
 
-UChatGPTObject* UChatGPTObject::CreateObject(UClass* InClass, UObject* InParent)
+UChatGPTObject* UChatGPTObject::CreateObject(UObject* WorldContextObejct,UClass* InClass, UObject* InParent)
 {
+	check(WorldContextObejct !=NULL);
+
+	if(InClass)
+	{
+		
+	}
 	if(InParent)
 	{
 		if(UChatGPTObject* Obj = NewObject<UChatGPTObject>(InParent,InClass))
@@ -43,6 +49,11 @@ bool UChatGPTObject::Request(const FString& InURL, const FString& InContent,
 	TMap<FString, FString>& InCustomMetaDataHeader)
 {
 	return HTTP->Request(InURL,InContent,InCustomMetaDataHeader);
+}
+bool UChatGPTObject::RequestByParam(const FString& InURL, const FChatGPTCompletionParam& InCompletionParam,
+	TMap<FString, FString> InCustomMetaDataHeader)
+{
+	return HTTP->Request(InURL,InCompletionParam,InCustomMetaDataHeader);
 }
 
 void UChatGPTObject::OnRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccessed)

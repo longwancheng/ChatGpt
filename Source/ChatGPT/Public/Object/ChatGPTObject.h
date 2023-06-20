@@ -16,16 +16,20 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FHttpChatGPTResponseDelegate OnFailure;
-public:
-	UFUNCTION(BlueprintCallable,meta=(DisplayName = "CreateChatGPTObject",Keywords = "GPT"),Category="ChatGPT")
-	static UChatGPTObject* CreateObject(UClass* InClass = NULL,UObject* InParent = NULL);
+
+	UFUNCTION(BlueprintCallable,meta=(DisplayName = "CreateChatGPTObject",Keywords = "GPT"),Category="ChatGPT",WorldContext = "WorldContextObejct")
+	static UChatGPTObject* CreateObject(UObject* WorldContextObejct,UClass* InClass = NULL,UObject* InParent = NULL);
 	
 	UFUNCTION(BlueprintCallable,Category="ChatGPT")
 	bool Request(const FString &InURL
-			,const FString& InContent
-			,TMap<FString,FString> &InCustomMetaDataHeader
-			);
-
+	,const FString& InContent
+	,TMap<FString,FString> &InCustomMetaDataHeader);
+	
+	UFUNCTION(BlueprintCallable,Category="ChatGPT")
+	bool RequestByParam(const FString &InURL
+	,const FChatGPTCompletionParam &InCompletionParam
+	,TMap<FString,FString> InCustomMetaDataHeader);
+	
 	UFUNCTION(BlueprintPure,Category="ChatGPT")
 	bool IsLeaveUnused()const;
 

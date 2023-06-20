@@ -3,7 +3,9 @@
 #include "CoreMinimal.h"
 #include "ChatGPTType.generated.h"
 
-enum  class EGPTMode:uint8
+//此列定义基础的数据类型 枚举或者结构体
+UENUM(BlueprintType)
+enum class EGPTMode:uint8
 {
 	DAVINCI_003 UMETA(DisPlayName = "text-davinci-003"),
 	GPT_MAX,
