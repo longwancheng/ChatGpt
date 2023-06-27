@@ -11,7 +11,7 @@ namespace ChatGPTMethod
 		switch(InMode)
 		{
 		case EGPTMode::DAVINCI_003:
-			return TEXT("text_davinci_003");
+			return TEXT("text-davinci-003");
 		default:
 			return TEXT("");
 		}

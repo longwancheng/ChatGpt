@@ -17,7 +17,7 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FHttpChatGPTResponseDelegate OnFailure;
 
-	UFUNCTION(BlueprintCallable,meta=(DisplayName = "CreateChatGPTObject",Keywords = "GPT"),Category="ChatGPT",WorldContext = "WorldContextObejct")
+	UFUNCTION(BlueprintCallable,meta=(DisplayName = "CreateChatGPTObject",Keywords = "GPT",WorldContext = "WorldContextObejct"),Category="ChatGPT")
 	static UChatGPTObject* CreateObject(UObject* WorldContextObejct,UClass* InClass = NULL,UObject* InParent = NULL);
 	
 	UFUNCTION(BlueprintCallable,Category="ChatGPT")

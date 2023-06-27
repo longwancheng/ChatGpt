@@ -20,14 +20,15 @@ void UChatGPTObject::InitChatGPT()
 UChatGPTObject* UChatGPTObject::CreateObject(UObject* WorldContextObejct,UClass* InClass, UObject* InParent)
 {
 	check(WorldContextObejct !=NULL);
-
+	UClass* MyClass = InClass;
 	if(InClass)
 	{
-		
+		MyClass = UChatGPTObject::StaticClass();
+
 	}
 	if(InParent)
 	{
-		if(UChatGPTObject* Obj = NewObject<UChatGPTObject>(InParent,InClass))
+		if(UChatGPTObject* Obj = NewObject<UChatGPTObject>(InParent, MyClass))
 		{
 			Obj->InitChatGPT();
 			return Obj;
@@ -35,10 +36,9 @@ UChatGPTObject* UChatGPTObject::CreateObject(UObject* WorldContextObejct,UClass*
 	}
 	else
 	{
-		if(UChatGPTObject* Obj = NewObject<UChatGPTObject>(NULL,InClass))
+		if(UChatGPTObject* Obj = NewObject<UChatGPTObject>(WorldContextObejct, MyClass))
 		{
 			Obj->InitChatGPT();
-			Obj->AddToRoot();
 			return Obj;
 		}
 	}

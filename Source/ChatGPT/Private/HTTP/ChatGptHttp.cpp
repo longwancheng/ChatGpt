@@ -71,7 +71,8 @@ namespace ChatGPTHTTP
 	}
 
 	bool FHTTP::Request(const FString& InURL, const FChatGPTCompletionParam& InCompletionParam,
-		TMap<FString, FString>& InCustomMetaDataHeader, EHTTPVerbType VerbType)
+		TMap<FString, FString>& InCustomMetaDataHeader, EHTTPVerbType VerbType
+		)
 	{
 		FString ParamJson;
 		ChatGPTMethod::ChatGPTCompletionParamToString(InCompletionParam,ParamJson);

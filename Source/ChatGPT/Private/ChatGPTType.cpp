@@ -10,3 +10,18 @@ FChatGPTCompletionParam::FChatGPTCompletionParam()
 	bStream = false;
 	Stop =TEXT("\n");
 };
+//FChatGPTChoices::FChatGPTChoices() {
+//	Index = INDEX_NONE;
+//}
+//
+//FChatGPTUsage::FChatGPTUsage() {
+//	Prompt_tokens = INDEX_NONE;
+//	Completion_tokens = INDEX_NONE;
+//	Total_tokens = INDEX_NONE;
+//}
+//
+//FChatGPTCompletionResponses::FChatGPTCompletionResponses() {
+//	Created = INDEX_NONE;
+//	Model = EGPTMode::GPT_INVALID;
+//
+//}
